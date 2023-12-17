@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbbc6rwhwarjw"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_8h7df"]
+[ext_resource type="Texture2D" uid="uid://c66x02ogiru4t" path="res://Player/battleship.png" id="1_nhtqe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyfdq"]
+radius = 2.0
+height = 10.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_8h7df")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_nhtqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dyfdq")
+
+[node name="Bullets" type="Node" parent="."]
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -4)

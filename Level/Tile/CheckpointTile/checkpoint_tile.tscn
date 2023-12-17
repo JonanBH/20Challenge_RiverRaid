@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://blf8sca1n5do5"]
+
+[ext_resource type="PackedScene" uid="uid://bcocs8d0wdou7" path="res://Level/Tile/tile.tscn" id="1_bbvwr"]
+[ext_resource type="Script" path="res://Level/Tile/CheckpointTile/checkpoint_tile.gd" id="1_hbefx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unnv6"]
+size = Vector2(160, 20)
+
+[node name="CheckpointTile" type="Node2D"]
+script = ExtResource("1_hbefx")
+
+[node name="LowerTile" parent="." instance=ExtResource("1_bbvwr")]
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -31)
+
+[node name="Polygon2D" type="Polygon2D" parent="LeftWall"]
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftWall"]
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -31)
+
+[node name="Polygon2D" type="Polygon2D" parent="RightWall"]
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightWall"]
+
+[node name="UpperTile" parent="." instance=ExtResource("1_bbvwr")]
+position = Vector2(0, -62)
+
+[node name="CheckpointArea" type="Area2D" parent="."]
+position = Vector2(80, -46)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea"]
+shape = SubResource("RectangleShape2D_unnv6")
+
+[connection signal="body_entered" from="CheckpointArea" to="." method="_on_checkpoint_area_body_entered"]

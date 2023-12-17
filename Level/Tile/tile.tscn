@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcocs8d0wdou7"]
+
+[ext_resource type="Script" path="res://Level/Tile/tile.gd" id="1_oc5v2"]
+
+[node name="Tile" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_oc5v2")
+max_horizontal_variation = 2
+
+[node name="LeftWall" type="Polygon2D" parent="."]
+z_index = -1
+
+[node name="RightWall" type="Polygon2D" parent="."]
+z_index = -1
+
+[node name="InnerWall" type="Polygon2D" parent="."]
+z_index = -1
+
+[node name="LeftCollision" type="CollisionPolygon2D" parent="."]
+
+[node name="RightCollision" type="CollisionPolygon2D" parent="."]
+
+[node name="InnerCollision" type="CollisionPolygon2D" parent="."]

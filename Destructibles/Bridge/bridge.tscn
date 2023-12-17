@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm4668lok5swm"]
+
+[ext_resource type="PackedScene" uid="uid://bodds8i3o14a6" path="res://Destructibles/Destructible/destructible.tscn" id="1_t1a5r"]
+[ext_resource type="Texture2D" uid="uid://cbq2joeegceue" path="res://Destructibles/Bridge/Bridge.png" id="2_cy3j7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkor6"]
+size = Vector2(43, 20)
+
+[node name="Bridge" instance=ExtResource("1_t1a5r")]
+base_score = 100
+
+[node name="HurtBox" parent="." index="0"]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(20, -16)
+shape = SubResource("RectangleShape2D_kkor6")
+
+[node name="DespawnTimer" parent="." index="1"]
+wait_time = 0.05
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("2_cy3j7")
+centered = false
+offset = Vector2(0, -32)
+
+[node name="PlayerDetection" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0"]
+position = Vector2(20, -16)
+shape = SubResource("RectangleShape2D_kkor6")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+
+[editable path="HurtBox"]

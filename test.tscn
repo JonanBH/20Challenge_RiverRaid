@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://lwn7pu6g5am5"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_a1170"]
+[ext_resource type="PackedScene" uid="uid://bcocs8d0wdou7" path="res://Level/Tile/tile.tscn" id="1_ljxhv"]
+[ext_resource type="PackedScene" uid="uid://blf8sca1n5do5" path="res://Level/Tile/CheckpointTile/checkpoint_tile.tscn" id="3_rq6fp"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_a1170")
+
+[node name="Tile" parent="." instance=ExtResource("1_ljxhv")]
+visible = false
+position = Vector2(0, 160)
+
+[node name="Tile2" parent="." instance=ExtResource("1_ljxhv")]
+visible = false
+position = Vector2(0, 129)
+
+[node name="CheckpointTile" parent="." instance=ExtResource("3_rq6fp")]
+position = Vector2(0, 100)
